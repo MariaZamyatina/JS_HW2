@@ -1,32 +1,22 @@
 
-function totalAmount(basket) {
+function totalAmountSum(basket) {
     let amount = 0;
-    for (let i=0;i<basket.length;i++) {
-        amount = amount + basket[i].amount;
-    }
-    console.log(amount);
-    return amount
-}
-
-function totalSum(basket) {
     let sum = 0;
     for (let i=0;i<basket.length;i++) {
-        sum = sum + basket[i].good.price;
-    }
-    console.log(sum);
-    return sum
-    
+        amount = amount + basket[i].amount;
+        sum = sum + basket[i].good.price * basket[i].amount;
+    }   
+    return {'totalAmount':amount,'totalSum':sum}
 }
 
 function addGoods(basket,good,amount) {
-    basket.push(good,amount);
+    basket.push({'good':good,'amount':amount});
     return basket
 }
 
 function delGoods(basket,index) {
-    delete basket[index];
-    arr = basket.filter(function(e){return e});
-    return arr
+    basket.splice(index,1)
+    return basket
 }
 
 function delBasket(basket) {
@@ -112,7 +102,7 @@ const basket2 = [
 const basket3 = [
     {
     good: good5,
-    amount: 1,
+    amount: 2,
     },
     {
     good: good5,
@@ -120,9 +110,7 @@ const basket3 = [
     },
 ]
 
-console.log("totalAmount:", totalAmount(basket2));
-console.log("totalSum:", totalSum(basket2));
-console.log("addGoods to basket:", addGoods(basket3,good1,100));
-console.log("addGoods to basker:", addGoods(basket3,good2,99));
-console.log("delGoods from basket :", delGoods(basket3,2));
+console.log("totalAmount and Sum:", totalAmountSum(basket3));
+console.log("addGoods to basket:", addGoods(basket1,good2,100));
+console.log("delGoods from basket :", delGoods(basket2,2));
 console.log("delBsasket:", delBasket(basket3));

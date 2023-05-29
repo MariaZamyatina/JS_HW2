@@ -15,24 +15,24 @@ def prostye_chisla(i):
         continue
     return True
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    num = input('введите число: ')
-    num = int(num)
+def poisk(num):
     if num < 2:
         print('введите число более 1')
     else:
-        t0 = datetime.datetime.now()
         arr = list()
         i = 2
-        while i <= num:
+        while len(arr) < num:
             if prostye_chisla(i):
                 arr.append(i)
             i += 1
+    return arr
 
-        t1 = datetime.datetime.now()
 
-        print(arr)
-        print((t1 - t0))
+if __name__ == '__main__':
+    #num = input('введите число: ')
+    #num = int(num)
+    t0 = datetime.datetime.now()
+    t1 = datetime.datetime.now()
+    print(poisk(int(input('введите число: '))))
+    print((t1 - t0))
 
